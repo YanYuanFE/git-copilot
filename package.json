@@ -1,6 +1,6 @@
 {
   "name": "git-copilot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An AI-based Git commit assistant tool that automatically analyzes your code changes and generates standardized commit messages",
   "main": "src/index.js",
   "bin": {
