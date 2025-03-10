@@ -30,7 +30,7 @@ Git-Copilot streamlines your Git workflow by leveraging AI to generate meaningfu
 npm install -g git-copilot
 ```
 
-After installation, you can use either `git-copilot` or the shorter alias `gc` to run the tool.
+After installation, you can use either `git-copilot` or the shorter alias `gai` to run the tool.
 
 ## 🚀 Usage
 
