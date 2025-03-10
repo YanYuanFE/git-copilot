@@ -1,0 +1,30 @@
+{
+  "name": "git-copilot",
+  "version": "1.0.0",
+  "description": "An AI-based Git commit assistant tool that automatically analyzes your code changes and generates standardized commit messages",
+  "main": "src/index.js",
+  "bin": {
+    "git-copilot": "./src/cli.js",
+    "gai": "./src/cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "git",
+    "commit",
+    "ai",
+    "deepseek",
+    "conventional-commits"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "chalk": "^4.1.2",
+    "commander": "^11.0.0",
+    "conf": "^10.2.0",
+    "inquirer": "^8.2.5",
+    "simple-git": "^3.20.0"
+  }
+}
