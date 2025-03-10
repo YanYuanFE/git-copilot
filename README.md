@@ -13,7 +13,7 @@ Git-Copilot streamlines your Git workflow by leveraging AI to generate meaningfu
 
 - **Intelligent Analysis**: Automatically analyzes code changes in the staging area or the most recent commit
 - **AI-Powered**: Uses AI (via deepseek API) to generate contextually relevant commit messages
-- **Conventional Commits**: Generated messages follow the [Conventional Commits](https://www.conventionalcommits.org/) specification
+- **Conventional Commits**: Generated messages follow the [Conventional Commits](https://www.conventionalcommits.org/) specification with emoji prefixes
 - **Staging Support**: Optionally adds all changes to the staging area automatically
 - **Change Statistics**: Provides detailed file change statistics (added, modified, deleted files)
 - **Flexible Workflow**: Supports automatic commit or commit after confirmation
