@@ -95,7 +95,7 @@ async function callDeepseekAPI(apiKey, context) {
         messages: [
           {
             role: 'system',
-            content: 'You are a professional code review assistant, skilled at analyzing code changes and generating commit messages that comply with the Conventional Commits specification. Always generate commit messages in English, not in any other language.'
+            content: 'You are a professional code review assistant, skilled at analyzing code changes and generating commit messages that comply with the Conventional Commits specification. Always generate commit messages in English, not in any other language. IMPORTANT: Return ONLY the commit message itself without any additional text, explanations, or descriptions. Do not include phrases like "Here\'s the commit message" or any concluding paragraphs.'
           },
           {
             role: 'user',
@@ -115,6 +115,8 @@ async function callDeepseekAPI(apiKey, context) {
 
     // Extract the generated commit message
     const commitMessage = response.data.choices[0].message.content.trim();
+    
+    
     return commitMessage;
   } catch (error) {
     console.error('Error calling deepseek API:', error.response?.data || error.message);
