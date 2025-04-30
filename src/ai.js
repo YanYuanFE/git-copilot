@@ -95,7 +95,7 @@ async function callDeepseekAPI(apiKey, context) {
         messages: [
           {
             role: 'system',
-            content: 'You are a professional code review assistant, skilled at analyzing code changes and generating commit messages that comply with the Conventional Commits specification. Always generate commit messages in English, not in any other language. IMPORTANT: Return ONLY the commit message itself without any additional text, explanations, or descriptions. Do not include phrases like "Here\'s the commit message" or any concluding paragraphs.'
+            content: 'You are a professional code review assistant, skilled at analyzing code changes and generating commit messages that comply with the Conventional Commits specification. Always generate commit messages in English, not in any other language. IMPORTANT: Return ONLY the raw commit message itself without ANY additional text, explanations, descriptions, or formatting. Do not include phrases like "Here\'s the commit message" or any concluding paragraphs. Do not wrap the message in code blocks or add prefixes like "commit-message" or "commit". Just output the plain commit message text directly.'
           },
           {
             role: 'user',
@@ -114,8 +114,20 @@ async function callDeepseekAPI(apiKey, context) {
     );
 
     // Extract the generated commit message
-    const commitMessage = response.data.choices[0].message.content.trim();
+    let commitMessage = response.data.choices[0].message.content.trim();
     
+    // 处理可能的前缀和代码块格式
+    // 首先移除开头的代码块标记和前缀
+    commitMessage = commitMessage.replace(/^```(?:commit-message|commit)?\s*/i, '').trim();
+    commitMessage = commitMessage.replace(/^(?:commit-message|commit)\s*/i, '').trim();
+    
+    // 移除结尾的代码块标记
+    commitMessage = commitMessage.replace(/```\s*$/g, '').trim();
+    
+    // 处理整个消息被包裹在代码块中的情况
+    if (commitMessage.startsWith('```') && commitMessage.endsWith('```')) {
+      commitMessage = commitMessage.substring(3, commitMessage.length - 3).trim();
+    }
     
     return commitMessage;
   } catch (error) {
